@@ -17,27 +17,27 @@ class AddUser extends Migration
             ],
             'first_name' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => '20',
             ],
             'last_name' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => '20',
             ],
             'email' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => '50',
             ],
             'mobile' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => '20',
             ],
             'user_name' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => '20',
             ],
             'password' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => '255',
             ],
         ]);
         $this->forge->addKey('user_id', true);

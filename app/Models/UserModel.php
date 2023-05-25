@@ -6,12 +6,30 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table      = 'cf-user-crud';
+    protected $table      = 'user';
     protected $primaryKey = 'user_id';
-
     protected $useAutoIncrement = true;
+    protected $allowedFields = ['first_name', 'last_name', 'email', 'mobile', 'user_name', 'password'];
+    protected $beforeInsert = ['beforeInsert'];
+    protected $beforeUpdate = ['beforeUpdate'];
 
-    // protected $returnType     = 'array';
+    protected function beforeInsert(array $data)
+    {
+        $data = $this->passwordHash($data);
+        return $data;
+    }
 
-    protected $allowedFields = ['first_name', 'first_name', 'email', 'mobile', 'username', 'password'];
+    protected function beforeUpdate(array $data)
+    {
+        $data = $this->passwordHash($data);
+        return $data;
+    }
+
+    protected function passwordHash(array $data)
+    {
+        if (isset($data['data']['password'])) {
+            $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+        }
+        return $data;
+    }
 }
