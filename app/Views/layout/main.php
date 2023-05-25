@@ -15,7 +15,7 @@
             <!-- END Left Aside -->
 
             <div class="page-content-wrapper">
-                
+
                 <!-- BEGIN Page Header -->
                 <?= $this->include('layout/nav_bar') ?>
                 <!-- END Page Header -->
@@ -35,8 +35,21 @@
     </div>
     <!-- END Page Wrapper -->
 
-    <script src="assets/js/vendors.bundle.js"></script>
-    <script src="assets/js/app.bundle.js"></script>
+    <script src="<?= base_url('assets/js/vendors.bundle.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/app.bundle.js'); ?>"></script>
+
+    <!-- jQuery-->
+    <script src="<?= base_url('assets/jquery/jquery-3.6.0.min.js'); ?>"></script>
+
+    <!-- DataTable JS-->
+    <script src="<?= base_url('assets/datatable/js/jquery.dataTables.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/datatable/js/dataTables.bootstrap4.min.js'); ?>"></script>
+
+    <!-- BEGIN Page Scripts -->
+    <?= $this->renderSection('scripts') ?>
+    <!-- BEGIN Page Scripts -->
+
+
 </body>
 <!-- END Body -->
 

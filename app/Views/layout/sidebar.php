@@ -9,28 +9,18 @@
         <ul id="js-nav-menu" class="nav-menu">
             <li class="active open">
                 <a href="#" title="Form Stuff" data-filter-tags="form stuff">
-                    <i class="fal fa-edit"></i>
-                    <span class="nav-link-text" data-i18n="nav.form_stuff">Form Stuff</span>
+                    <i class="fal fa-user"></i>
+                    <span class="nav-link-text" data-i18n="nav.form_stuff">Users</span>
                 </a>
                 <ul>
-                    <li class="active">
-                        <a href="form_basic_inputs.html" title="Basic Inputs" data-filter-tags="form stuff basic inputs">
-                            <span class="nav-link-text" data-i18n="nav.form_stuff_basic_inputs">Basic Inputs</span>
+                    <li class="<?= (current_url() == base_url('index.php/user') || current_url() == base_url('index.php/') ) ? 'active' : ''; ?>">
+                        <a href="<?= route_to('user'); ?>" title="User Data">
+                            <span class="nav-link-text">User Data</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="form_checkbox_radio.html" title="Checkbox & Radio" data-filter-tags="form stuff checkbox & radio">
-                            <span class="nav-link-text" data-i18n="nav.form_stuff_checkbox_&_radio">Checkbox & Radio</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="form_input_groups.html" title="Input Groups" data-filter-tags="form stuff input groups">
-                            <span class="nav-link-text" data-i18n="nav.form_stuff_input_groups">Input Groups</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="form_validation.html" title="Validation" data-filter-tags="form stuff validation">
-                            <span class="nav-link-text" data-i18n="nav.form_stuff_validation">Validation</span>
+                    <li class="<?= (current_url() == base_url('index.php/user/add')) ? 'active' : ''; ?>">
+                        <a href="<?= route_to('user.add'); ?>"  title="Add Users">
+                            <span class="nav-link-text">Add Users</span>
                         </a>
                     </li>
                 </ul>
