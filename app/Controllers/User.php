@@ -50,7 +50,7 @@ class User extends BaseController
                 // Set Session based on the status(For alerts)
                 $session = session();
                 $session->setFlashdata('alert_status', $status);
-                if($status){
+                if ($status) {
                     $session->setFlashdata('alert_message', 'New User Added Successfully');
                 } else {
                     $session->setFlashdata('alert_message', 'Failed To add the User');
@@ -73,6 +73,22 @@ class User extends BaseController
             $data = [
                 'success' => true,
                 'data'      => $custom_user->getUsersData(),
+            ];
+            return $this->response->setJSON($data);
+        } else {
+            return $this->response->setStatusCode(400, 'No direct script access allowed');
+        }
+    }
+    /**
+     * Delete the given user with the id
+     */
+    public function delete($user_id)
+    {
+        if ($this->request->is('delete')) {
+            $users = new UserModel();
+            $status = $users->deleteUser($user_id);
+            $data = [
+                'success' => $status,
             ];
             return $this->response->setJSON($data);
         } else {

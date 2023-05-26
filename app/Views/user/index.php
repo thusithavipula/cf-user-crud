@@ -21,6 +21,7 @@
                             <th>Email</th>
                             <th>Mobile</th>
                             <th>Username</th>
+                            <th>Delete</th>
                         </thead>
                         <tbody>
                         </tbody>
@@ -35,6 +36,8 @@
 <?= $this->section('scripts') ?>
 <script>
     $(function() {
+
+        // Generate the Datatable using the AJAX request
         let user_table = $('#user-table').DataTable({
             ajax: {
                 url: "<?= base_url('user/getAll'); ?>",
@@ -63,8 +66,30 @@
             ],
             order: [
                 [1, 'asc']
-            ]
+            ],
+            columnDefs: [{
+                targets: 6,
+                render: function(data, type, row, meta) {
+                    return '<a data-user-id="' + row.user_id + '" class="btn btn-danger btn-sm btn-icon delete-user">' +
+                        '<i class="fal fa-trash"></i>' +
+                        '</a>';
+                }
+            }]
 
+        });
+
+        // Delete User With an AJAX request
+        $('#user-table tbody').on('click', '.delete-user', function() {
+            // Get the respective user_id from the 'data' attribute
+            const user_id = $(this).data('userId');
+            $.ajax({
+                url: "<?= base_url('user/delete/'); ?>" + user_id,
+                type: 'DELETE',
+                complete: function(data) {
+                    // Reload the data table to reflect the DB changes
+                    user_table.ajax.reload();
+                }
+            });
         });
     });
 </script>

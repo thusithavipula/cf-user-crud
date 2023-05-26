@@ -17,6 +17,7 @@ class UserModel extends Model
     {
         $this->db->transStart();
 
+        // Insert Data to User Credential table
         $user_credential = array(
             'user_name' => $user_data['user_name'],
             'password' => $this->passwordHash($user_data['password']),
@@ -27,6 +28,7 @@ class UserModel extends Model
         // Get the AutoIncriment ID as the user_id
         $user_id = $this->db->insertID();
 
+        // Insert Data to User Information table
         $user_informaion = array(
             'user_id' => $user_id,
             'first_name' => $user_data['first_name'],
@@ -57,5 +59,22 @@ class UserModel extends Model
         $builder->select('user_id, first_name, last_name, email, mobile, user_name');
         $builder->join($this->table_informaion, $this->table_credential . '.id = ' . $this->table_informaion . '.user_id');
         return $builder->get()->getResult();
+    }
+
+    /**
+     *  Delete User data and respective tables records and return the status
+     */
+    public function deleteUser($user_id)
+    {
+        $this->db->transStart();
+
+        // Delete the user from User Credential table
+        $this->db->table($this->table_credential)->where('id', $user_id)->delete();
+
+        // Delete the user from User Information table
+        $this->db->table($this->table_informaion)->where('user_id', $user_id)->delete();
+
+        $this->db->transComplete();
+        return $this->db->transStatus();
     }
 }

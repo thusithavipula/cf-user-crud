@@ -36,6 +36,7 @@ $routes->group('user', static function ($routes) {
     $routes->get('add', 'User::add');
     $routes->post('add', 'User::add');
     $routes->post('getAll', 'User::getAll');
+    $routes->delete('delete/(:num)', 'User::delete/$1');
 });
 
 /*
