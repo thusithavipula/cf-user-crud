@@ -10,6 +10,7 @@ Clone the `main` branch of this repository.
 
 ## Setup
 
+- Run `composer i` install the dependencies. 
 - Copy `env` to `.env` and specifically the baseURL and any database settings that match with your dev environment.
 - Create a database called `cf-user-crud` to match the settings on the env file.
 - Run `php spark migrate --all` to migrate the default table structures.
