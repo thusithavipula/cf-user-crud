@@ -14,12 +14,12 @@
                 </a>
                 <ul>
                     <li class="<?= (current_url() == base_url('index.php/user') || current_url() == base_url('index.php/') ) ? 'active' : ''; ?>">
-                        <a href="<?= route_to('user'); ?>" title="User Data">
+                        <a href="<?= base_url('user'); ?>" title="User Data">
                             <span class="nav-link-text">User Data</span>
                         </a>
                     </li>
                     <li class="<?= (current_url() == base_url('index.php/user/add')) ? 'active' : ''; ?>">
-                        <a href="<?= route_to('user.add'); ?>"  title="Add Users">
+                        <a href="<?= base_url('user/add'); ?>"  title="Add Users">
                             <span class="nav-link-text">Add Users</span>
                         </a>
                     </li>

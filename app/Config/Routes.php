@@ -32,10 +32,10 @@ $routes->set404Override();
 $routes->get('/', 'User::index');
 
 $routes->group('user', static function ($routes) {
-    $routes->get('/', 'User::index', ['as'=>'user']);
-    $routes->get('add', 'User::add', ['as'=>'user.add']);
+    $routes->get('/', 'User::index');
+    $routes->get('add', 'User::add');
     $routes->post('add', 'User::add');
-    $routes->post('getAll', 'User::getAll', ['as'=>'user.get_all']);
+    $routes->post('getAll', 'User::getAll');
 });
 
 /*

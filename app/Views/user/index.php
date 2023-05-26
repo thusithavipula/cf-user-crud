@@ -12,6 +12,7 @@
         <div class="panel" data-panel-lock="false" data-panel-close="false" data-panel-fullscreen="false" data-panel-collapsed="false" data-panel-color="false" data-panel-locked="false" data-panel-refresh="false" data-panel-reset="false">
             <div class="panel-container show">
                 <div class="panel-content border-faded border-left-0 border-right-0 border-top-0">
+                    <?= $this->include('components/alert') ?>
                     <table class="table table-hover" id="user-table">
                         <thead>
                             <th>#</th>
@@ -34,11 +35,11 @@
 <?= $this->section('scripts') ?>
 <script>
     $(function() {
-        $('#user-table').DataTable({
+        let user_table = $('#user-table').DataTable({
             ajax: {
-                url: "<?= route_to('user.get_all'); ?>",
-                dataSrc: '',
-                type: "post",
+                url: "<?= base_url('user/getAll'); ?>",
+                dataSrc: 'data',
+                type: "POST",
             },
             processing: true,
             columns: [{
