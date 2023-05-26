@@ -36,7 +36,7 @@
     <!-- END Page Wrapper -->
 
     <script src="<?= base_url('assets/js/vendors.bundle.js'); ?>"></script>
-    <script src="<?= base_url('assets/js/app.bundle.js'); ?>"></script>
+    <!-- <script src="<?= base_url('assets/js/app.bundle.js'); ?>"></script> -->
 
     <!-- jQuery-->
     <script src="<?= base_url('assets/jquery/jquery-3.6.0.min.js'); ?>"></script>
@@ -44,6 +44,9 @@
     <!-- DataTable JS-->
     <script src="<?= base_url('assets/datatable/js/jquery.dataTables.min.js'); ?>"></script>
     <script src="<?= base_url('assets/datatable/js/dataTables.bootstrap4.min.js'); ?>"></script>
+
+    <!-- Bootstrap JS-->
+    <script src="<?= base_url('assets/js/bootstrap.js'); ?>"></script>
 
     <!-- BEGIN Page Scripts -->
     <?= $this->renderSection('scripts') ?>
